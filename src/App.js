@@ -18,8 +18,8 @@ let actx = new AudioContext()
 function App() {
   // const [osc1Freq , setOsc1Freq] = useState(osc2.frequency.value)
   // const [osc2Freq , setOsc2Freq] = useState(osc2.frequency.value)
-  const [gain1, setGain1] = useState()
-  const [gain2, setGain2] = useState()
+  const [gain1state, setGain1] = useState()
+  const [gain2state, setGain2] = useState()
   const [out, setOut] =useState()
 
 
@@ -30,7 +30,7 @@ function App() {
     let filter = actx.createBiquadFilter();
     let out = actx.destination;
     setOut(out)
-    osc1.connect(gain1);
+    // osc1.connect(gain1);
     gain1.connect(filter);
     setGain1(gain1)
     filter.connect(out);
@@ -41,7 +41,7 @@ function App() {
     setGain2(gain2)
     let filter2 = actx.createBiquadFilter();
 
-    osc2.connect(gain2);
+    // osc2.connect(gain2);
     gain2.connect(filter2);
     filter2.connect(out);
     setOut(out)
@@ -86,8 +86,8 @@ function App() {
       {/* <Osc1  changeFreq={changeOsc1Freq} freq={osc1Freq}/>*/}
       {/*<Osc1  changeFreq={changeOsc2Freq} freq={osc2Freq}/>*/}
       {/*<Audio1 audioCtx={actx} />*/}
-      <Audio2 audioCtx={actx}  gain={gain1} channelNumber={1}/>
-      <Audio2 audioCtx={actx} gain={gain2} channelNumber={2}/>
+      <Audio2 audioCtx={actx}  gain={gain1state} channelNumber={1}/>
+      <Audio2 audioCtx={actx} gain={gain2state} channelNumber={2}/>
     </div>
   );
 }

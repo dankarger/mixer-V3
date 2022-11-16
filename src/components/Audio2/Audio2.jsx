@@ -7,9 +7,11 @@ const Audio2 = ({audioCtx, channelNumber, gain}) => {
     const [buffer, setBuffer]  = useState(null);
     const [ file, setFile ] = useState()
     const [audio, setAudio] = useState();
+    const [sourceState, setSourceState] = useState()
+
 
     const [buttonName, setButtonName] = useState("Play");
-
+    console.log('gain',gain)
     useEffect(() => {
         if (a) {
             a.pause();
@@ -24,6 +26,7 @@ const Audio2 = ({audioCtx, channelNumber, gain}) => {
                 setButtonName("Play");
             };
             const source = audioCtx.createMediaElementSource(a)
+            setSourceState(source)
             source.connect(gain)
         }
     }, [audio, audioCtx]);

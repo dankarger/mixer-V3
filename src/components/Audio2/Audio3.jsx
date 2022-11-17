@@ -39,13 +39,19 @@ const Audio3 = ({audioCtx, channelNumber, gain, setGain}) => {
                 audioCtx.resume()
             }
             // a.play();
-           sourceState.start()
-            setButtonName("Pause");
+            if(!isPuase){
+                sourceState.start()
+                setButtonName("Pause");
+
+            }else {
+
+            }
+
         } else {
             // sourceState.stop()
 
             sourceState.playbackRate.value = 0
-
+            setIsPause(true)
             setButtonName("Play");
         }
     };
@@ -53,7 +59,7 @@ const Audio3 = ({audioCtx, channelNumber, gain, setGain}) => {
     const addFile = async (e) => {
 
         if (e.target.files[0]) {
-           setFile(e.target.files[0])
+           setFile((prev)=>e.target.files[0])
         }
         //----------
         const reader1 = new FileReader();
@@ -74,7 +80,6 @@ const Audio3 = ({audioCtx, channelNumber, gain, setGain}) => {
         };
         reader1.readAsArrayBuffer(e.target.files[0]);
     }
-
 
 
 

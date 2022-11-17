@@ -2,6 +2,7 @@ import Osc1 from "./components/Osc/Osc1";
 import {useEffect, useState} from "react";
 import Audio1 from "./components/audio1/Audio1";
 import Audio2 from "./components/Audio2/Audio2";
+import Audio3 from "./components/Audio2/Audio3";
 import './App.css';
 
 let actx = new AudioContext()
@@ -86,8 +87,8 @@ function App() {
       {/* <Osc1  changeFreq={changeOsc1Freq} freq={osc1Freq}/>*/}
       {/*<Osc1  changeFreq={changeOsc2Freq} freq={osc2Freq}/>*/}
       {/*<Audio1 audioCtx={actx} />*/}
-      <Audio2 audioCtx={actx}  gain={gain1state} channelNumber={1}/>
-      <Audio2 audioCtx={actx} gain={gain2state} channelNumber={2}/>
+      <Audio3 audioCtx={actx}  gain={gain1state} setGain={setGain1} channelNumber={1}/>
+      <Audio3 audioCtx={actx} gain={gain2state} channelNumber={2}/>
     </div>
   );
 }

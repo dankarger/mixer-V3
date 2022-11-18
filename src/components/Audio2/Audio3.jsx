@@ -1,10 +1,12 @@
 import {useState,useEffect} from "react";
+import Eq from "../Eq/Eq";
+
 import './Audio.css'
 
 let a;
 let bufferLoader
 
-const Audio3 = ({audioCtx, channelNumber, gain, setGain, children}) => {
+const Audio3 = ({audioCtx, channelNumber, gain, setGain, panner,  children}) => {
 
     const [buffer, setBuffer]  = useState(null);
     const [ isPuase, setIsPause] = useState(false)
@@ -71,7 +73,7 @@ const Audio3 = ({audioCtx, channelNumber, gain, setGain, children}) => {
                 const soundSource = audioCtx.createBufferSource();
                 soundSource.buffer = buffer;
                 setBuffer(buffer)
-                soundSource.connect(gain)
+                // soundSource.connect(gain)
                 setSourceState(soundSource)
 
                 // Create Compressor Node
@@ -89,9 +91,14 @@ const Audio3 = ({audioCtx, channelNumber, gain, setGain, children}) => {
 
             <div className="channel">
                 <h2>{channelNumber}</h2>
+                {sourceState &&
+                <Eq context={audioCtx} source={sourceState} number={channelNumber} gain={gain}/>
+
+                }
+                {children}
                 <button onClick={handleClick}>{buttonName}</button>
                 <input type="file" onChange={addFile} />
-                {children}
+
             </div>
         </div>
     )

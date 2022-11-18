@@ -4,7 +4,7 @@ import './Audio.css'
 let a;
 let bufferLoader
 
-const Audio3 = ({audioCtx, channelNumber, gain, setGain}) => {
+const Audio3 = ({audioCtx, channelNumber, gain, setGain, children}) => {
 
     const [buffer, setBuffer]  = useState(null);
     const [ isPuase, setIsPause] = useState(false)
@@ -91,6 +91,7 @@ const Audio3 = ({audioCtx, channelNumber, gain, setGain}) => {
                 <h2>{channelNumber}</h2>
                 <button onClick={handleClick}>{buttonName}</button>
                 <input type="file" onChange={addFile} />
+                {children}
             </div>
         </div>
     )

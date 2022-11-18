@@ -5,7 +5,7 @@ const InputSlider=({number})=>{
     return (
         <div className={styles.slide}>
             <h4>input {number}</h4>
-            <input type=/>
+            <input type="range"/>
         </div>
     )
 
